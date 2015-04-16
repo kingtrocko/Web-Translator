@@ -6,3 +6,15 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
+{
+    @Html.Label("Fuente:")
+    @Html.TextBox("txtSource")
+    
+    <p>
+        @ViewBag.Result
+        </p>
+    
+    <input type="submit" value="Submit" />
+    
+}
