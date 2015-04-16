@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebTranslator.Models;
 
 
 namespace WebTranslator.Controllers
@@ -24,11 +25,12 @@ namespace WebTranslator.Controllers
         }
 
         [HttpPost]
-        [ActionName("Index")]
+        //[ActionName("Index")]
         public ActionResult Translate(string txtSource)
         {
-            string result = translatorAPI.Translate(txtSource, "en", "es");
-            ViewBag.Remove = result;
+            //string result = translatorAPI.Translate(txtSource, "en", "es");
+           string [] langs = translatorAPI.GetLanguagesNames();
+            //ViewBag.Remove = result;
             return View();
         }
     }

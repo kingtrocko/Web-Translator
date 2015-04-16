@@ -4,17 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row 150%">
+    <div class="4u">
+        <section class="box">
+            @using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
+            {
+                @Html.Label("Fuente:")
+                @Html.TextBox("txtSource")
 
-@using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
-{
-    @Html.Label("Fuente:")
-    @Html.TextBox("txtSource")
-    
-    <p>
-        @ViewBag.Result
-        </p>
-    
-    <input type="submit" value="Submit" />
-    
-}
+                <p>
+                    @ViewBag.Result
+                </p>
+
+                <input type="submit" value="Submit" />
+
+            }
+
+        </section>
+    </div>
+</div>
