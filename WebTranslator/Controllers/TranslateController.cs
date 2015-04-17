@@ -27,19 +27,22 @@ namespace WebTranslator.Controllers
             {
                 SourceLanguages = new SelectList(languages, "Value", "Key"),
                 TargetLanguages = new SelectList(languages, "Value", "Key"),
-                SelectedValue = "es"
+                SourceSelectedValue = "es",
+                TargetSelectedValue = "en"
             };
             return View(model);
         }
 
         [HttpPost]
         //[ActionName("Index")]
-        public ActionResult Translate(string txtSource)
+        public string GetTranslation(string text, string from, string to)
         {
-            //string result = translatorAPI.Translate(txtSource, "en", "es");
-           
-            //ViewBag.Remove = result;
-            return View();
+            if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(to))
+            {
+                return translatorAPI.Translate(text, from, to);
+            }
+            return "";
         }
+
     }
 }

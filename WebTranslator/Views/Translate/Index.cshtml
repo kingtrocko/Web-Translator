@@ -6,26 +6,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
+<script type="text/javascript">
+
+    function callService () {
+        var ServiceUrl = "@Url.Action("GetTranslation", "Translate")";
+
+        $.ajax({
+            type: 'POST',
+            url: ServiceUrl,
+            data:
+                {
+                    from: $('#ddlSourceLanguage').val(),
+                    to: $("#ddlTargetLanguage").val(),
+                    text: $('#TranslateText').val()
+                },
+            error: function (xhr, err) {
+                alert('error');
+            },
+            success: function (result, status) {
+                $('#TranslateResult').text(result.toString());
+            }
+        });
+    }
+
+    jQuery(document).ready(function () {
+        $(".ddl").change(callService);
+
+        $("form").submit(function (event) {
+            event.preventDefault();
+            callService();
+        });
+    });
+
+</script>
+
+@using (Html.BeginForm(FormMethod.Post))
     {
 <div class="row 150%">
    
         <div class="4u">
             <section class="box">
 
-                @Html.DropDownListFor(x => x.SelectedValue, Model.SourceLanguages, "From", new { @name = "ddlSource" })
+                @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll"})
                 @Html.Label("Origen:")
-                @Html.EditorFor(x=> x.TranslateText)
+                @Html.EditorFor(x => x.TranslateText, new { id = "txtSourceText" })
                 <br />
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Translate" class="btnTrans"/>
 
             </section>
         </div>
         
         <div class="4u">
             <section class="box">
-                @Html.DropDownListFor(x => x.SelectedValue, Model.TargetLanguages, "To", new { @name = "ddlTarget" })
+                @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
                 @Html.Label("Destino:")
                 @Html.EditorFor(x=> x.TranslateResult)
             </section>
