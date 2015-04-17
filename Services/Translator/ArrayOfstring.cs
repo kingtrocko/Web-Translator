@@ -10,7 +10,7 @@ namespace Services.Translator
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable = false)]
-    public partial class ArrayOfstring
+    public partial class ArrayOfString
     {
 
         private string[] stringField;

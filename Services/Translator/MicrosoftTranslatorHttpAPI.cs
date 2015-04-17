@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Xml.Linq;
 
 namespace Services.Translator
 {
@@ -60,16 +61,9 @@ namespace Services.Translator
             return ParseResponseAsString(HttpRequest(requestPath));
         }
 
-        private string [] GetLanguagesCodes()
+        public Dictionary<string, string> GetLanguagesNames()
         {
-            requestUri = "http://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate";
-
-            return ParseResponseAsXml(HttpRequest(requestUri));
-        }
-
-        public string [] GetLanguagesNames()
-        {
-            requestUri = "http://api.microsofttranslator.com/V1/Http.svc/GetLanguageNames";
+            requestUri = "http://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames";
             List<string> queryStringParameters = new List<string>();
             queryStringParameters.Add(String.Format("locale={0}", "en"));
 
@@ -77,7 +71,13 @@ namespace Services.Translator
 
             string[] languagesCodes = GetLanguagesCodes();
 
-            return ParseResponseAsXml(HttpRequest(requestPath, "text/xml", "POST", languagesCodes));
+            string[] languagesNames = ParseResponseAsArray(HttpRequest(requestPath, "text/xml", "POST", languagesCodes));
+
+            var dictionary = languagesNames.Zip(languagesCodes, (s, i) => new { s, i })
+                          .ToDictionary(item => item.s, item => item.i);
+
+
+            return dictionary;
 
         }
 
@@ -86,40 +86,23 @@ namespace Services.Translator
 
         #region PrivateMethods
 
-        private string [] ParseResponseAsXml(HttpWebResponse response)
+        private string[] GetLanguagesCodes()
         {
-            //System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(response.GetResponseStream());
+            requestUri = "http://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate";
+
+            return ParseResponseAsArray(HttpRequest(requestUri));
+        }
+
+        private string [] ParseResponseAsArray(HttpWebResponse response)
+        {
             string result = ResponseAsString(response);
-            System.Xml.Linq.XDocument xdoc = System.Xml.Linq.XDocument.Parse(result, System.Xml.Linq.LoadOptions.PreserveWhitespace);
-            //xmlReader.Close();
+            XDocument xdoc = XDocument.Parse(result);
 
-            try
-            {
-                using (Stream stream = response.GetResponseStream())
-                {
-                    DataContractSerializer dcs = new DataContractSerializer(typeof(object));
-                    object myObject = dcs.ReadObject(stream);
-                    if (myObject != null)
-                        Debug.Write("NOT NULL");
-                }
-            }
-            catch (Exception ex)
-            {
+            var list = xdoc.Root.Elements()
+                           .Select(element => element.Value)
+                           .ToArray();
 
-                string errro = ex.Message;
-            }
-
-            return null;
-            //using (Stream stream = response.GetResponseStream())
-            //{
-            //    System.Runtime.Serialization.DataContractSerializer dcs = new System.Runtime.Serialization.DataContractSerializer(typeof(ArrayOfstring));
-
-
-            //    ArrayOfstring arrayofStrings = (ArrayOfstring)dcs.ReadObject(stream);
-            //    Debug.WriteLine("The languages available for translation are: ");
-            //    //languageCodes.ForEach(a => Console.WriteLine(a));
-            //    return arrayofStrings.@string;
-            //}
+            return list;
         }
 
         private string ParseResponseAsString(HttpWebResponse response)
@@ -158,11 +141,15 @@ namespace Services.Translator
                     }
                 }
                 response = (HttpWebResponse)request.GetResponse();
+
+                //string str = ResponseAsString(response);
+
                 return response;
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                string err = ex.Message;
+                return null;
             }
 
             //finally

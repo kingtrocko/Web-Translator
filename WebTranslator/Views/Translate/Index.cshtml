@@ -1,25 +1,34 @@
-﻿
+﻿@model WebTranslator.Models.Translator
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
+    {
 <div class="row 150%">
-    <div class="4u">
-        <section class="box">
-            @using (Html.BeginForm("Translate", "Translate", FormMethod.Post))
-            {
-                @Html.Label("Fuente:")
-                @Html.TextBox("txtSource")
+   
+        <div class="4u">
+            <section class="box">
 
-                <p>
-                    @ViewBag.Result
-                </p>
-
+                @Html.DropDownListFor(x => x.SelectedValue, Model.SourceLanguages, "From", new { @name = "ddlSource" })
+                @Html.Label("Origen:")
+                @Html.EditorFor(x=> x.TranslateText)
+                <br />
+                <br />
                 <input type="submit" value="Submit" />
 
-            }
-
-        </section>
-    </div>
+            </section>
+        </div>
+        
+        <div class="4u">
+            <section class="box">
+                @Html.DropDownListFor(x => x.SelectedValue, Model.TargetLanguages, "To", new { @name = "ddlTarget" })
+                @Html.Label("Destino:")
+                @Html.EditorFor(x=> x.TranslateResult)
+            </section>
+        </div>
 </div>
+}

@@ -21,7 +21,15 @@ namespace WebTranslator.Controllers
         
         public ActionResult Index()
         {
-            return View();
+            Dictionary<string, string> languages = translatorAPI.GetLanguagesNames();
+
+            var model = new Translator
+            {
+                SourceLanguages = new SelectList(languages, "Value", "Key"),
+                TargetLanguages = new SelectList(languages, "Value", "Key"),
+                SelectedValue = "es"
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -29,7 +37,7 @@ namespace WebTranslator.Controllers
         public ActionResult Translate(string txtSource)
         {
             //string result = translatorAPI.Translate(txtSource, "en", "es");
-           string [] langs = translatorAPI.GetLanguagesNames();
+           
             //ViewBag.Remove = result;
             return View();
         }
