@@ -75,10 +75,7 @@ namespace Services.Translator
 
             var dictionary = languagesNames.Zip(languagesCodes, (s, i) => new { s, i })
                           .ToDictionary(item => item.s, item => item.i);
-
-
             return dictionary;
-
         }
 
 
