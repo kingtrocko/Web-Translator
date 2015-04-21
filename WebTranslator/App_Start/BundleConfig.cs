@@ -24,6 +24,9 @@ namespace WebTranslator.App_Start
                 "~/Scripts/init.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/Scripts/swagger").Include(
+                "~/Scripts/swagger-client.js"));
+
             BundleTable.EnableOptimizations = false;
         }
     }

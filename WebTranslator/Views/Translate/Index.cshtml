@@ -35,6 +35,37 @@
         });
     }
 
+    function Speak()
+    {
+        var ServiceUrl = "@Url.Action("SpeakUrl", "Translate")";
+
+        $.ajax({
+            type: 'POST',
+            url: ServiceUrl,
+            data:
+                {
+                    text: $('#TranslateResult').val(),
+                    language: $('#ddlTargetLanguage').val()
+                },
+            error: function (xhr, err) {
+                alert('error while playing audio');
+            },
+            success: function (result, status) {
+                if (result == '') {
+                    alert('The text is empty. Write something');
+                }
+                else {
+                    var s = document.createElement("source");
+                    s.setAttribute("src", result.toString());
+                    s.setAttribute("type", "audio/mpeg");
+                    $("video").empty();
+                    document.getElementsByTagName("video")[0].appendChild(s);
+                    $("video").load();
+                }
+            }
+        });
+    }
+
     jQuery(document).ready(function () {
         $(".ddl").change(callService);
 
@@ -43,11 +74,12 @@
             callService();
         });
 
+
         //start a timer when the user releases a key and clear it when they press one.
 
         //setup before functions
         var typingTimerID;                //timer identifier
-        var doneTypingInterval = 3000;  //time in ms, 5 second for example
+        var doneTypingInterval = 3000;  //time in ms, 3 second for example
 
         //on keyup, start the countdown
         $('#TranslateText').keyup(function () {
@@ -76,7 +108,12 @@
                 <br />
                 <br />
                 <input type="submit" value="Translate" class="btnTrans"/>
-
+                <br/>
+                <br/>
+                <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen Audio</a>
+                <br />
+                <br />
+                <a href="#" class="btnTrans">Send By Email</a>
             </section>
         </div>
         
@@ -87,5 +124,9 @@
                 @Html.EditorFor(x=> x.TranslateResult)
             </section>
         </div>
+        <video autoplay>
+
+        </video>
+
 </div>
 }

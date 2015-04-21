@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebTranslator.Communication;
 using WebTranslator.Models;
 
 
@@ -37,11 +38,29 @@ namespace WebTranslator.Controllers
         //[ActionName("Index")]
         public string GetTranslation(string text, string from, string to)
         {
-            if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(to))
+
+            EmailClient.SendEmail();
+
+
+            //if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(to))
+            //{
+            //    return translatorAPI.Translate(text, from, to);
+            //}
+            return "";
+        }
+
+        public string SpeakUrl(string text, string language)
+        {
+            if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(language))
             {
-                return translatorAPI.Translate(text, from, to);
+                return translatorAPI.GetAudioUrl(text, language);
             }
             return "";
+        }
+
+        public void SendByEmail()
+        {
+            
         }
 
     }

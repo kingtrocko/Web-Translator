@@ -78,6 +78,20 @@ namespace Services.Translator
             return dictionary;
         }
 
+        public string GetAudioUrl(string text, string language)
+        {
+            requestUri = "http://api.microsofttranslator.com/V2/Http.svc/Speak";
+            List<string> queryStringParameters = new List<string>();
+            queryStringParameters.Add(String.Format("appId=Bearer {0}", HttpUtility.UrlEncode(authentication.GetAccessToken().access_token)));
+            queryStringParameters.Add(String.Format("text={0}", HttpUtility.UrlEncode(text)));
+            queryStringParameters.Add(String.Format("language={0}", language));
+            queryStringParameters.Add(String.Format("format={0}", HttpUtility.UrlEncode("audio/mp3")));
+
+            requestPath = CreateRequestPath(requestUri, queryStringParameters);
+
+            return requestPath;
+        }
+
 
         #endregion
 
