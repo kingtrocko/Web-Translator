@@ -1,0 +1,69 @@
+﻿@model WebTranslator.Models.Currency
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnConvert").click(function (e) {
+            e.preventDefault();
+            var url = "@Url.Action("Convert", "Currency")";
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data:
+                    {
+                        value: $('#QuotedValue').val(),
+                        from: $('#ddlSourceCurrency').val(),
+                        to: $('#ddlTargetCurrency').val(),
+                    },
+                error: function (xhr, err) {
+                    alert('error while coverting currency');
+                },
+                success: function (result, status) {
+                    if (result != "" || result != "-1") {
+                        $("#CurrencyResult").val(result);
+                    }
+                    else {
+                        alert('ERROR 100');
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div class="row 150%">
+
+        <div class="4u">
+            <section class="box">
+
+                @Html.DropDownListFor(x => x.SelectedValueFrom, Model.From, "From", new { id = "ddlSourceCurrency", @class = "dll" })
+                @Html.Label("Origen:")
+                @Html.EditorFor(x => x.QuotedValue)
+                <br />
+                <br />
+                <input type="submit" value="Convert" id="btnConvert" class="btnTrans" />
+                <br />
+            </section>
+        </div>
+
+        <div class="4u">
+            <section class="box">
+                @Html.DropDownListFor(x => x.SelectedValueTo, Model.To, "To", new { id = "ddlTargetCurrency", @class = "ddl" })
+                @Html.Label("Destino:")
+                @Html.EditorFor(x => x.CurrencyResult)
+            </section>
+        </div>
+        <video autoplay></video>
+
+    </div>
+}
+

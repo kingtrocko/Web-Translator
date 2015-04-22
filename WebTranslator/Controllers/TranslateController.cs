@@ -38,14 +38,10 @@ namespace WebTranslator.Controllers
         //[ActionName("Index")]
         public string GetTranslation(string text, string from, string to)
         {
-
-            EmailClient.SendEmail();
-
-
-            //if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(to))
-            //{
-            //    return translatorAPI.Translate(text, from, to);
-            //}
+            if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(from) && !string.IsNullOrEmpty(to))
+            {
+                return translatorAPI.Translate(text, from, to);
+            }
             return "";
         }
 
