@@ -45,6 +45,7 @@ namespace WebTranslator.Controllers
             return "";
         }
 
+        [HttpPost]
         public string SpeakUrl(string text, string language)
         {
             if (!string.IsNullOrEmpty(text) && !string.IsNullOrEmpty(language))
@@ -54,9 +55,20 @@ namespace WebTranslator.Controllers
             return "";
         }
 
+        [HttpPost]
+        public string Detect(string text)
+        {
+            if (!String.IsNullOrEmpty(text))
+            {
+                string languageCode = translatorAPI.DetectLanguage(text);
+                return languageCode;
+            }
+            return "";
+        }
+
         public void SendByEmail()
         {
-            
+            EmailClient.SendEmail();
         }
 
     }

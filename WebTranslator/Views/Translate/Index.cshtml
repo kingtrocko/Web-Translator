@@ -66,6 +66,34 @@
         });
     }
 
+    function DetectLang()
+    {
+        var ServiceUrl = "@Url.Action("Detect", "Translate")";
+
+        $.ajax({
+            type: 'POST',
+            url: ServiceUrl,
+            data:
+                {
+                    text: $('#TranslateText').val()
+                },
+            error: function (xhr, err) {
+                alert('error while detecting language');
+            },
+            success: function (result, status) {
+                if (result == '') {
+                    alert('ERROR 200');
+                }
+                else {
+                    $("#ddlSourceLanguage").val(result);
+                    callService();
+                }
+            }
+        });
+
+    }
+
+
     jQuery(document).ready(function () {
         $(".ddl").change(callService);
 
@@ -74,23 +102,14 @@
             callService();
         });
 
-
-        //start a timer when the user releases a key and clear it when they press one.
-
-        //setup before functions
-        var typingTimerID;                //timer identifier
-        var doneTypingInterval = 3000;  //time in ms, 3 second for example
-
-        //on keyup, start the countdown
+        //on keyup, detect language
         $('#TranslateText').keyup(function () {
-            clearTimeout(typingTimerID);
-            typingTimerID = setTimeout(callService, doneTypingInterval);
+            if ($(this).val().length > 0) {
+                DetectLang();
+            }
         });
 
-        //on keydown, clear the countdown 
-        $('#TranslateText').keydown(function () {
-            clearTimeout(typingTimerID);
-        });
+        
 
     });
 </script>

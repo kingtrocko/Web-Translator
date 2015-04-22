@@ -44,7 +44,15 @@ namespace Services.Translator
 
         public string DetectLanguage(string text)
         {
-            return "";
+            requestUri = "http://api.microsofttranslator.com/V2/Http.svc/Detect";
+            List<string> param = new List<string>();
+            param.Add(String.Format("text={0}", text));
+
+            requestPath = CreateRequestPath(requestUri, param);
+
+            string code = ParseResponseAsString(HttpRequest(requestPath));
+
+            return code;
         }
 
         public string Translate(string textToTranslate, string from, string to)

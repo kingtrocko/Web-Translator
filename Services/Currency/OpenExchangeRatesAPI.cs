@@ -69,7 +69,6 @@ namespace Services.Currency
                     return tmp;
                 }
             }
-
             return "";
         }
 
