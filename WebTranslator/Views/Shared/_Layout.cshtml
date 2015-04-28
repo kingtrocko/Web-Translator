@@ -1,99 +1,97 @@
 ﻿<!DOCTYPE html>
-<!--
-    Escape Velocity by HTML5 UP
-    html5up.net | Atn33co
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 <head>
-    <title>No Sidebar - Escape Velocity by HTML5 UP</title>
+    <title>Traductor - Eduardo</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="~/Content/html5shiv.js"></script><![endif]-->
+    <!-- 
+        <![if lte IE 8]>
+            <script src="@Url.Content("~/Content/ie/html5shiv.js")"></script>
+        <![endif]
+    -->
+
     @Scripts.Render("~/Scripts/js")
-
-    @*<script src="~/Scripts/jquery.min.js"></script>
-    <script src="~/Scripts/jquery.dropotron.min.js"></script>
-    <script src="~/Scripts/skel.min.js"></script>
-    <script src="~/Scripts/skel-layers.min.js"></script>
-    <script src="~/Scripts/init.js"></script>*@
-
-    @Styles.Render("~/Content/css")
     
     <noscript>
-        
-       
+        <link rel="stylesheet" href="@Url.Content("~/Content/skel.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Content/style.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Content/style-wide.css")" />
     </noscript>
-    <!--[if lte IE 8]><link rel="stylesheet" href="~/Content/v8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="@Url.Content("~/Content/ie/v9.css")" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="@Url.Content("~/Content/ie/v8.css")" /><![endif]-->
 </head>
-<body class="no-sidebar">
+
+<body>
+
     <!-- Header -->
-    <div id="header-wrapper" class="wrapper">
-        <div id="header">
+    <div id="header" class="skel-layers-fixed">
+
+        <div class="top">
 
             <!-- Logo -->
             <div id="logo">
-                <h1><a href="index.html">Web Translator</a></h1>
-                <p>translate, dictionary, currency and units</p>
+                <h1 id="title">Web Translator</h1>
             </div>
 
             <!-- Nav -->
             <nav id="nav">
+                <!--
+
+                    Prologue's nav expects links in one of two formats:
+
+                    1. Hash link (scrolls to a different section within the page)
+
+                       <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                    2. Standard link (sends the user to another page/site)
+
+                       <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+                -->
                 <ul>
-                    <li class="current"><a href="@Url.Action("Index","Translate")">Traductor</a></li>
-                    <li>
-                        <a href="@Url.Action("Index","Dictionary")">Diccionario</a>
-                    </li>
-                    <li><a href="#">Unidad</a></li>
-                    <li><a href="@Url.Action("Index","Currency")">Moneda</a></li>
+                    <li><a href="@Url.Action("Index","Translate")" id="translate-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Translate</span></a></li>
+                    <li><a href="@Url.Action("Index","Dictionary")" id="dictionary-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Dictionary</span></a></li>
+                    <li><a href="#" id="units-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Units</span></a></li>
+                    <li><a href="@Url.Action("Index","Currency")" id="Currency-link" class="icon fa-whatever-icon-you-want"><span class="icon fa-envelope">Currency</span></a></li>
                 </ul>
             </nav>
 
         </div>
+
+        <div class="bottom">
+
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Translate</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Dictionary</span></a></li>
+                <li><a href="#" class="icon fa-github"><span class="label">Units</span></a></li>
+                <li><a href="#" class="icon fa-dribbble"><span class="label">Currency</span></a></li>
+            </ul>
+
+        </div>
+
     </div>
 
     <!-- Main -->
-    <div class="wrapper style2">
-        <div class="title">No Sidebar</div>
-        <div id="main" class="container">
-
-            <!-- Content -->
-            <div id="content">
-                @RenderBody()
-            
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Highlights -->
-    <div class="wrapper style3">
-        <div class="title">The Endorsements</div>
+    <div id="main">
+        @RenderBody()
         
     </div>
 
     <!-- Footer -->
-    <div id="footer-wrapper" class="wrapper">
-        <div class="title">The Rest Of It</div>
-        <div id="footer" class="container">
-            <header class="style1">
-                <h2>Ipsum sapien elementum portitor?</h2>
-                <p>
-                    Your footer here.<br />
-                    Nam pharetra laoreet imperdiet volutpat etiam consequat feugiat.
-                </p>
-            </header>
-            <hr />
-            <hr />
-        </div>
-        <div id="copyright">
-            <ul>
-                <li>&copy; Untitled.</li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-        </div>
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="#">Translator</a></li>
+        </ul>
+
     </div>
 
 </body>
+
+
 </html>

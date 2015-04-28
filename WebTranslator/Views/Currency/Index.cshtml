@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -40,31 +39,43 @@
 
 </script>
 
-@using (Html.BeginForm(FormMethod.Post))
-{
-    <div class="row 150%">
+<section id="Currency" class="three">
+    <div class="container">
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <div class="row">
+                <div class="4u">
+                    @Html.DropDownListFor(x => x.SelectedValueFrom, Model.From, "From", new { id = "ddlSourceCurrency", @class = "dll" })
+                </div>
+                <div class="1u">
+                    switch
+                </div>
+                <div class="4u">
+                    @Html.DropDownListFor(x => x.SelectedValueTo, Model.To, "To", new { id = "ddlTargetCurrency", @class = "ddl" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="4u">
+                    @Html.EditorFor(x => x.QuotedValue)
+                </div>
+                <div class="1u">
+                    ==
+                </div>
+                <div class="4u">
+                    @Html.EditorFor(x => x.CurrencyResult)
+                </div>
+            </div>
+            <div class="row">
+                <div class="4u">
 
-        <div class="4u">
-            <section class="box">
+                </div>
+                <div class="4u">
+                    <input type="submit" value="Convert" id="btnConvert" class="btnTrans" />
+                </div>
+                <div class="4u">
 
-                @Html.DropDownListFor(x => x.SelectedValueFrom, Model.From, "From", new { id = "ddlSourceCurrency", @class = "dll" })
-                @Html.Label("Origen:")
-                @Html.EditorFor(x => x.QuotedValue)
-                <br />
-                <br />
-                <input type="submit" value="Convert" id="btnConvert" class="btnTrans" />
-                <br />
-            </section>
-        </div>
-
-        <div class="4u">
-            <section class="box">
-                @Html.DropDownListFor(x => x.SelectedValueTo, Model.To, "To", new { id = "ddlTargetCurrency", @class = "ddl" })
-                @Html.Label("Destino:")
-                @Html.EditorFor(x => x.CurrencyResult)
-            </section>
-        </div>
-        <video autoplay></video>
-
+                </div>
+            </div>
+        }
     </div>
-}
+</section>

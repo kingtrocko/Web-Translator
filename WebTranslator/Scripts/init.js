@@ -1,5 +1,5 @@
 /*
-	Escape Velocity by HTML5 UP
+	Prologue by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
@@ -9,35 +9,37 @@
 	skel.init({
 		reset: 'full',
 		breakpoints: {
-			'global':	{ range: '*', href: '../Content/style.css' },
-			'desktop':	{ range: '737-', href: '../Content/style-desktop.css', containers: 1200, grid: { gutters: 50 } },
-			'1000px':	{ range: '737-1200', href: '../Content/style-1000px.css', containers: 1000, grid: { gutters: 35 }, viewport: { width: 1080 } },
-			'mobile':	{ range: '-736', href: '../Content/style-mobile.css', containers: '100%!', grid: { collapse: true, gutters: 20 }, viewport: { scalable: false } }
+			'global':	{ range: '*', href: '../Content/style.css', containers: 1400, grid: { gutters: 40 }, viewport: { scalable: false } },
+			'wide': { range: '961-1880', href: '../Content/style-wide.css', containers: 1200, grid: { gutters: 40 } },
+			'normal': { range: '961-1620', href: '../Content/style-normal.css', containers: 960, grid: { gutters: 40 } },
+			'narrow': { range: '961-1320', href: '../Content/style-narrow.css', containers: '100%', grid: { gutters: 20 } },
+			'narrower': { range: '-960', href: '../Content/style-narrower.css', containers: '100%', grid: { gutters: 20 } },
+			'mobile': { range: '-736', href: '../Content/style-mobile.css', containers: '100%!', grid: { collapse: true } }
 		},
 		plugins: {
 			layers: {
 				config: {
 					mode: 'transform'
 				},
-				navPanel: {
+				sidePanel: {
 					hidden: true,
-					breakpoints: 'mobile',
+					breakpoints: 'narrower',
 					position: 'top-left',
 					side: 'left',
 					animation: 'pushX',
-					width: '80%',
+					width: 240,
 					height: '100%',
 					clickToHide: true,
-					html: '<div data-action="navList" data-args="nav"></div>',
+					html: '<div data-action="moveElement" data-args="header"></div>',
 					orientation: 'vertical'
 				},
-				titleBar: {
-					breakpoints: 'mobile',
+				sidePanelToggle: {
+					breakpoints: 'narrower',
 					position: 'top-left',
 					side: 'top',
-					height: 44,
-					width: '100%',
-					html: '<span class="toggle" data-action="toggleLayer" data-args="navPanel"></span><span class="title" data-action="copyHTML" data-args="logo"></span>'
+					height: '4em',
+					width: '5em',
+					html: '<div data-action="toggleLayer" data-args="sidePanel" class="toggle"></div>'
 				}
 			}
 		}
@@ -54,6 +56,10 @@
 			$window.on('load', function() {
 				$body.removeClass('is-loading');
 			});
+
+		// CSS polyfills (IE<9).
+			if (skel.vars.IEVersion < 9)
+				$(':last-child').addClass('last-child');
 
 		// Forms (IE<10).
 			var $form = $('form');
@@ -72,17 +78,50 @@
 
 			}
 
-		// CSS polyfills (IE<9).
-			if (skel.vars.IEVersion < 9)
-				$(':last-child').addClass('last-child');
+		// Scrolly links.
+			$('.scrolly').scrolly();
 
-		// Dropdowns.
-			$('#nav > ul').dropotron({
-				mode: 'fade',
-				noOpenerFade: true,
-				alignment: 'center',
-				detach: false
-			});
+		// Nav.
+			var $nav_a = $('#nav a');
+
+			// Scrolly-fy links.
+				$nav_a
+					.scrolly()
+					.on('click', function(e) {
+
+						var t = $(this),
+							href = t.attr('href');
+
+						if (href[0] != '#')
+							return;
+
+						e.preventDefault();
+
+						// Clear active and lock scrollzer until scrolling has stopped
+							$nav_a
+								.removeClass('active')
+								.addClass('scrollzer-locked');
+
+						// Set this link to active
+							t.addClass('active');
+
+					});
+
+			// Initialize scrollzer.
+				var ids = [];
+
+				$nav_a.each(function() {
+
+					var href = $(this).attr('href');
+
+					if (href[0] != '#')
+						return;
+
+					ids.push(href.substring(1));
+
+				});
+
+				$.scrollzer(ids, { pad: 200, lastHack: true });
 
 	});
 

@@ -114,38 +114,51 @@
     });
 </script>
 
-@using (Html.BeginForm(FormMethod.Post))
-    {
-<div class="row 150%">
-   
-        <div class="4u">
-            <section class="box">
 
-                @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll"})
-                @Html.Label("Origen:")
-                @Html.EditorFor(x => x.TranslateText)
-                <br />
-                <br />
-                <input type="submit" value="Translate" class="btnTrans"/>
-                <br/>
-                <br/>
-                <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen Audio</a>
-                <br />
-                <br />
-                <a href="#" class="btnTrans">Send By Email</a>
-            </section>
-        </div>
-        
-        <div class="4u">
-            <section class="box">
-                @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
-                @Html.Label("Destino:")
-                @Html.EditorFor(x=> x.TranslateResult)
-            </section>
-        </div>
-        <video autoplay>
+<section id="Translate" class="three">
+    <div class="container">
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <div class="row">
+                <div class="4u">
+                    @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll" })
+                </div>
+                <div class="1u">
+                 switch  
+                </div>
+                <div class="4u">
+                    @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="4u">
+                    @Html.EditorFor(x => x.TranslateText)
+                </div>
+                <div class="1u">
+                    ==
+                </div>
+                <div class="4u">
+                    @Html.EditorFor(x => x.TranslateResult)
+                </div>
+            </div>
+            <div class="row">
+                <div class="4u">
 
-        </video>
+                </div>
+                <div class="4u">
+                    <input type="submit" value="Translate" class="btnTrans" />
+                    <br />
+                    <br />
+                    <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen Audio</a>
+                    <br />
+                    <br />
+                    <a href="#" class="btnTrans">Send By Email</a>
+                </div>
+                <div class="4u">
 
-</div>
-}
+                </div>
+            </div>
+        }
+        <video autoplay></video>
+    </div>
+</section>
