@@ -58,9 +58,9 @@
                     var s = document.createElement("source");
                     s.setAttribute("src", result.toString());
                     s.setAttribute("type", "audio/mpeg");
-                    $("video").empty();
-                    document.getElementsByTagName("video")[0].appendChild(s);
-                    $("video").load();
+                    $("audio").empty();
+                    document.getElementsByTagName("audio")[0].appendChild(s);
+                    $("audio").load();
                 }
             }
         });
@@ -142,10 +142,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="4u">
+                <div class="2u">
 
                 </div>
-                <div class="4u">
+                <div class="5u">
                     <input type="submit" value="Translate" class="btnTrans" />
                     <br />
                     <br />
@@ -154,11 +154,11 @@
                     <br />
                     <a href="#" class="btnTrans">Send By Email</a>
                 </div>
-                <div class="4u">
+                <div class="5u">
 
                 </div>
             </div>
         }
-        <video autoplay></video>
+        <audio autoplay></audio>
     </div>
 </section>
