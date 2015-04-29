@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="@Url.Content("~/Content/skel.css")" />
         <link rel="stylesheet" href="@Url.Content("~/Content/style.css")" />
         <link rel="stylesheet" href="@Url.Content("~/Content/style-wide.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/Content/style-desktop.css")" />
     </noscript>
     <!--[if lte IE 9]><link rel="stylesheet" href="@Url.Content("~/Content/ie/v9.css")" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="@Url.Content("~/Content/ie/v8.css")" /><![endif]-->
@@ -53,8 +54,8 @@
                 <ul>
                     <li><a href="@Url.Action("Index","Translate")" id="translate-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Translate</span></a></li>
                     <li><a href="@Url.Action("Index","Dictionary")" id="dictionary-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Dictionary</span></a></li>
-                    <li><a href="#" id="units-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Units</span></a></li>
-                    <li><a href="@Url.Action("Index","Currency")" id="Currency-link" class="icon fa-whatever-icon-you-want"><span class="icon fa-envelope">Currency</span></a></li>
+                    <li><a href="#" id="units-link" class="skel-layers-ignoreHref"><span class="icon fa-tachometer">Units</span></a></li>
+                    <li><a href="http://localhost:31434/Currency" id="Currency-link" class="icon"><span class="icon fa-usd">Currency</span></a></li>
                 </ul>
             </nav>
 
@@ -74,10 +75,17 @@
 
     </div>
 
+    <div id="ads">
+
+        <p>
+            Publicidad aqui.
+        </p>
+
+    </div>
+
     <!-- Main -->
     <div id="main">
         @RenderBody()
-        
     </div>
 
     <!-- Footer -->

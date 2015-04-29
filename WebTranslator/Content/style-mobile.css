@@ -94,3 +94,32 @@
 			{
 				margin-top: 0;
 			}
+
+/*********************************************************************************/
+/* Wrappers                                                                      */
+/*********************************************************************************/
+
+.wrapper
+{
+	padding: 15px 15px 5em 15px;
+}
+
+	.wrapper .title
+	{
+		font-size: 0.9em;
+		width: 18em;
+		height: 2.5em;
+		top: -2.5em;
+		line-height: 2.5em;
+		margin-bottom: -2.5em;
+		margin-left: -9em;
+		padding-top: 0.5em;
+	}
+		
+		.wrapper .title:before,
+		.wrapper .title:after
+		{
+			height: 15px;
+			bottom: -15px;
+			background-size: 100% 100%;
+		}

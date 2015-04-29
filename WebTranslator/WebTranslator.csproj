@@ -107,6 +107,8 @@
     <Content Include="Content\ie\v9.css" />
     <Content Include="Content\images\overlay.png" />
     <Content Include="Content\skel.css" />
+    <Content Include="Content\style-1000px.css" />
+    <Content Include="Content\style-desktop.css" />
     <Content Include="Content\style-mobile.css" />
     <Content Include="Content\style-narrow.css" />
     <Content Include="Content\style-narrower.css" />

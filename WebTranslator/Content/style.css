@@ -722,8 +722,8 @@
 		#main > section
 		{
 			margin: 0;
-			overflow: hidden;
-			padding: 4em 0;
+			/*overflow: hidden;
+			padding: 4em 0;*/
 			box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
 			text-align: center;
 			background-image: url('images/overlay.png');
@@ -783,3 +783,121 @@
 			{
 				background-color: #e8edec;
 			}
+
+
+/*********************************************************************************/
+/* Wrappers                                                                      */
+/*********************************************************************************/
+
+	.wrapper
+	{
+		position: relative;
+	}
+
+		.wrapper .title
+		{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			text-align: center;
+			text-transform: uppercase;
+			display: block;
+			font-weight: 700;
+			letter-spacing: 0.25em;
+		}
+		
+		.wrapper .title:before
+		{
+			content: '';
+			position: absolute;
+			bottom: -38px;
+			left: -35px;
+			width: 35px;
+			height: 38px;
+			background: url('images/shadow.png');
+		}
+		
+		.wrapper .title:after
+		{
+			content: '';
+			position: absolute;
+			bottom: -38px;
+			right: -35px;
+			width: 35px;
+			height: 38px;
+			background: url('images/shadow.png');
+			-moz-transform: scaleX(-1);
+			-webkit-transform: scaleX(-1);
+			-o-transform: scaleX(-1);
+			-ms-transform: scaleX(-1);
+			transform: scaleX(-1);
+    	}
+
+		.wrapper.style1
+		{
+			background: #e97770 url('images/overlay.png');
+			color: #eee;
+			color: rgba(255,255,255,0.75);
+		}
+		
+			.wrapper.style1 .title
+			{
+				background: #e97770 url('images/overlay.png');
+				color: #fff;
+			}
+		
+			.wrapper.style1 h1,
+			.wrapper.style1 h2,
+			.wrapper.style1 h3,
+			.wrapper.style1 h4,
+			.wrapper.style1 h5,
+			.wrapper.style1 h6,
+			.wrapper.style1 strong,
+			.wrapper.style1 b,
+			.wrapper.style1 a
+			{
+				color: #fff;
+			}
+		
+		.wrapper.style2
+		{
+			background: #fff;
+		}
+		
+			.wrapper.style2 .title
+			{
+				background: #fff;
+				color: #484d55;
+			}
+		
+		.wrapper.style3
+		{
+			background: #f3f3f3 url('images/overlay.png');
+		}
+		
+			.wrapper.style3 .title
+			{
+				background: #f3f3f3 url('images/overlay.png');
+				color: #484d55;
+			}
+			
+			.wrapper.style3 .image
+			{
+				border: solid 10px #fff;
+			}
+
+
+
+#ads {
+    margin-left: 375px;
+    text-align: center;
+    padding: 1em 0 4em 0;
+    box-shadow: inset 0 1px 0 0 rgba(0,0,0,0.05), inset 0 0.1em 0.1em 0 rgba(0,0,0,0.025);
+    font-size: 0.8em;
+    background: #D0CECE;
+}
+
+.button.style1 {
+  background: #e97770 url('images/overlay.png');
+  color: #fff;
+}

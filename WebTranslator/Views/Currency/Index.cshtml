@@ -40,41 +40,43 @@
 </script>
 
 <section id="Currency" class="three">
-    <div class="container">
+    <div class="">
         @using (Html.BeginForm(FormMethod.Post))
         {
-            <div class="row">
-                <div class="4u">
-                    @Html.DropDownListFor(x => x.SelectedValueFrom, Model.From, "From", new { id = "ddlSourceCurrency", @class = "dll" })
+            <div class="wrapper style2">
+                <div class="title">Conversor</div>
+                <div id="inner-main" class="container3">
+                    <div class="row">
+                        <div class="6u -3u">
+                            <div class="row">
+                                <div class="6u">
+                                    @Html.DropDownListFor(x => x.SelectedValueFrom, Model.From, "From", new { id = "ddlSourceCurrency", @class = "dll" })
+                                </div>
+                                <div class="6u">
+                                    @Html.DropDownListFor(x => x.SelectedValueTo, Model.To, "To", new { id = "ddlTargetCurrency", @class = "ddl" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="6u -3u">
+                            <div class="row">
+                                <div class="6u">
+                                    @Html.EditorFor(x => x.QuotedValue)
+                                </div>
+                                <div class="6u">
+                                    @Html.EditorFor(x => x.CurrencyResult)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="6u -3u">
+                            <input type="submit" value="Convert" id="btnConvert" class="btnTrans button style1" />
+                        </div>
+                    </div>
                 </div>
-                <div class="1u">
-                    switch
-                </div>
-                <div class="4u">
-                    @Html.DropDownListFor(x => x.SelectedValueTo, Model.To, "To", new { id = "ddlTargetCurrency", @class = "ddl" })
-                </div>
-            </div>
-            <div class="row">
-                <div class="4u">
-                    @Html.EditorFor(x => x.QuotedValue)
-                </div>
-                <div class="1u">
-                    ==
-                </div>
-                <div class="4u">
-                    @Html.EditorFor(x => x.CurrencyResult)
-                </div>
-            </div>
-            <div class="row">
-                <div class="2u">
-
-                </div>
-                <div class="5u">
-                    <input type="submit" value="Convert" id="btnConvert" class="btnTrans" />
-                </div>
-                <div class="5u">
-
-                </div>
+            
             </div>
         }
     </div>

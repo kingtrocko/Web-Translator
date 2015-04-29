@@ -14,7 +14,9 @@
 			'normal': { range: '961-1620', href: '../Content/style-normal.css', containers: 960, grid: { gutters: 40 } },
 			'narrow': { range: '961-1320', href: '../Content/style-narrow.css', containers: '100%', grid: { gutters: 20 } },
 			'narrower': { range: '-960', href: '../Content/style-narrower.css', containers: '100%', grid: { gutters: 20 } },
-			'mobile': { range: '-736', href: '../Content/style-mobile.css', containers: '100%!', grid: { collapse: true } }
+			'mobile': { range: '-736', href: '../Content/style-mobile.css', containers: '100%!', grid: { collapse: true } },
+			'desktop': { range: '737-', href: '../Content/style-desktop.css', containers: 1200, grid: { gutters: 50 } },
+			'1000px': { range: '737-1200', href: '../Content/style-1000px.css', containers: 1000, grid: { gutters: 35 }, viewport: { width: 1080 } }
 		},
 		plugins: {
 			layers: {

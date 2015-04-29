@@ -97,6 +97,7 @@
     jQuery(document).ready(function () {
         $(".ddl").change(callService);
 
+        //Onclick when submmit button is clicked
         $("form").submit(function (event) {
             event.preventDefault();
             callService();
@@ -116,46 +117,62 @@
 
 
 <section id="Translate" class="three">
-    <div class="container">
+    <div class="">
         @using (Html.BeginForm(FormMethod.Post))
         {
-            <div class="row">
-                <div class="4u">
-                    @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll" })
-                </div>
-                <div class="1u">
-                 switch  
-                </div>
-                <div class="4u">
-                    @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
+            <div class="wrapper style2">
+                <div class="title">Texto Original</div>
+                <div id="inner-main" class="container3">
+                    <div class="row">
+                        <div class="6u -3u">
+                            <span>Seleccione el idioma</span>
+                            @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="6u -3u">
+                            @Html.EditorFor(x => x.TranslateText)
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="6u -3u">
+                            <span>Traducir a</span>
+                            @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
+                            <br />
+                            <input type="submit" value="Translate" class="btnTrans button style1" />
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="4u">
-                    @Html.EditorFor(x => x.TranslateText)
-                </div>
-                <div class="1u">
-                    ==
-                </div>
-                <div class="4u">
-                    @Html.EditorFor(x => x.TranslateResult)
-                </div>
-            </div>
-            <div class="row">
-                <div class="2u">
-
-                </div>
-                <div class="5u">
-                    <input type="submit" value="Translate" class="btnTrans" />
-                    <br />
-                    <br />
-                    <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen Audio</a>
-                    <br />
-                    <br />
-                    <a href="#" class="btnTrans">Send By Email</a>
-                </div>
-                <div class="5u">
-
+            
+            <div class="wrapper style3">
+                <div class="title">Traducción</div>
+                <div id="inner-main" class="container3">
+                    <div class="row">
+                        <div class="6u -3u">
+                            @Html.EditorFor(x => x.TranslateResult)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="6u -3u">
+                            <div class="row">
+                                <div class="3u">
+                                    <span>Copy</span>
+                                </div>
+                                <div class="3u">
+                                    <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen</a>
+                                </div>
+                                <div class="3u">
+                                    <a href="#" class="btnTrans">Send By Email</a>
+                                </div>
+                                <div class="3u">
+                                    <span>Share</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
