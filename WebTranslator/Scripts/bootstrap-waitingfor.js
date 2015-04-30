@@ -1,4 +1,5 @@
-﻿/**
+﻿
+/**
  * Module for displaying "Waiting for..." dialog using Bootstrap
  *
  * @author Eugene Maslovich <ehpc@em42.ru>
