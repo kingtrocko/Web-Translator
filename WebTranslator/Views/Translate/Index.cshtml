@@ -11,12 +11,17 @@
         resize: none;
     }
 </style>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="~/Scripts/bootstrap-maxlength.min.js"></script>
+<script src="~/Scripts/bootstrap-waitingfor.js"></script>
 
 <script type="text/javascript">
 
     function callService () {
         var ServiceUrl = "@Url.Action("GetTranslation", "Translate")";
+
+        waitingDialog.show('Espere un momento...');
 
         $.ajax({
             type: 'POST',
@@ -32,6 +37,9 @@
             },
             success: function (result, status) {
                 $('#TranslateResult').text(result.toString());
+            },
+            complete: function () {
+                waitingDialog.hide();
             }
         });
     }
@@ -115,6 +123,9 @@
             alwaysShow: true
         });
 
+        
+
+
     });
 </script>
 
@@ -156,7 +167,7 @@
                                     @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
                                 </div>
                                 <div class="4u">
-                                    <input type="submit" value="Tranducir" class="btnTrans button style1" />
+                                    <input type="submit" id="btntranslate" value="Tranducir" class="btnTrans button style1" />
                                 </div>
                             </div>
                         </div>
