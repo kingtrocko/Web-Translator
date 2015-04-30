@@ -127,6 +127,7 @@
     <Content Include="images\pic07.jpg" />
     <Content Include="images\pic08.jpg" />
     <Content Include="lib\swagger-client.js" />
+    <Content Include="Scripts\bootstrap-maxlength.min.js" />
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.scrolly.min.js" />

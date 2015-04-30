@@ -34,10 +34,10 @@
 	body,input,textarea,select
 	{
 		font-family: 'Source Sans Pro', sans-serif;
-		font-size: 19pt;
+		font-size: 13pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		/*color: #888;*/
 	}
 
 	h1,h2,h3,h4,h5,h6
@@ -357,7 +357,7 @@
 				
 				form textarea
 				{
-					min-height: 14em;
+					min-height: 12em;
 				}
 
 				form .formerize-placeholder
@@ -616,6 +616,7 @@
 	
 	#nav
 	{
+        font-size: 22px
 	}
 	
 		#nav ul

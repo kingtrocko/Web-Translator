@@ -11,6 +11,7 @@
         resize: none;
     }
 </style>
+<script src="~/Scripts/bootstrap-maxlength.min.js"></script>
 
 <script type="text/javascript">
 
@@ -95,7 +96,7 @@
 
 
     jQuery(document).ready(function () {
-        $(".ddl").change(callService);
+        //$(".ddl").change(callService);
 
         //Onclick when submmit button is clicked
         $("form").submit(function (event) {
@@ -104,13 +105,15 @@
         });
 
         //on keyup, detect language
-        $('#TranslateText').keyup(function () {
-            if ($(this).val().length > 0) {
-                DetectLang();
-            }
-        });
+        //$('#TranslateText').keyup(function () {
+        //    if ($(this).val().length > 0) {
+        //        DetectLang();
+        //    }
+        //});
 
-        
+        $('textarea#TranslateText').maxlength({
+            alwaysShow: true
+        });
 
     });
 </script>
@@ -123,25 +126,39 @@
             <div class="wrapper style2">
                 <div class="title">Texto Original</div>
                 <div id="inner-main" class="container3">
-                    <div class="row">
-                        <div class="6u -3u">
-                            <span>Seleccione el idioma</span>
-                            @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll" })
+                    
+                    <div class="row 50%">
+                        <div class="8u -2u">
+                            <div class="row">
+                                <div class="6u">
+                                    <span>Seleccione el idioma del texto a traducir</span>
+                                </div>
+                                <div class="6u">
+                                    @Html.DropDownListFor(x => x.SourceSelectedValue, Model.SourceLanguages, "From", new { id = "ddlSourceLanguage", @class = "dll" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row 50%">
+                        <div class="8u -2u">
+                            @Html.TextAreaFor(x => x.TranslateText, new { maxlength = 10000})
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="6u -3u">
-                            @Html.EditorFor(x => x.TranslateText)
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="6u -3u">
-                            <span>Traducir a</span>
-                            @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
-                            <br />
-                            <input type="submit" value="Translate" class="btnTrans button style1" />
+                        <div class="8u -2u">
+                            <div class="row">
+                                <div class="2u">
+                                    <span>Traducir a</span>
+                                </div>
+                                <div class=" 6u">
+                                    @Html.DropDownListFor(x => x.TargetSelectedValue, Model.TargetLanguages, "To", new { id = "ddlTargetLanguage", @class = "ddl" })
+                                </div>
+                                <div class="4u">
+                                    <input type="submit" value="Tranducir" class="btnTrans button style1" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,8 +167,8 @@
             <div class="wrapper style3">
                 <div class="title">Traducción</div>
                 <div id="inner-main" class="container3">
-                    <div class="row">
-                        <div class="6u -3u">
+                    <div class="row 50%">
+                        <div class="8u -2u">
                             @Html.EditorFor(x => x.TranslateResult)
                         </div>
                     </div>

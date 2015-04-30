@@ -26,6 +26,7 @@ namespace WebTranslator.Models
 
         
         [DataType(DataType.MultilineText)]
+        [MaxLength(10000)]
         public string TranslateText { get; set; }
 
         
