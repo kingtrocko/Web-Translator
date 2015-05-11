@@ -182,57 +182,67 @@ namespace DataEntry
             ComboBox cmb = (ComboBox)sender;
             if (cmb.SelectedIndex != -1)
             {
-                Data.dsConversorTableAdapters.sub_categories1TableAdapter s = new Data.dsConversorTableAdapters.sub_categories1TableAdapter();
-
-                cmbCategs2.DataSource = null;
+                Data.dsConversorTableAdapters.measures1TableAdapter s = new Data.dsConversorTableAdapters.measures1TableAdapter();
 
                 DataRowView oDataRowView = cmb.SelectedItem as DataRowView;
+                DataTable dt = new DataTable();
+                DataTable dt2 = new DataTable();
 
-                if (oDataRowView != null)
-                    cmbCategs2.DataSource = s.GetData(int.Parse(oDataRowView.Row[0].ToString()));
-                else
-                    cmbCategs2.DataSource = s.GetData(int.Parse(cmb.SelectedValue.ToString()));
+               if (oDataRowView != null)
+               {
+                   dt = s.GetData(Convert.ToInt32(oDataRowView.Row[0].ToString()));
+                   dt2 = s.GetData(Convert.ToInt32(oDataRowView.Row[0].ToString()));
+               }
+               else
+               {
+                   dt = s.GetData(Convert.ToInt32(cmb.SelectedValue.ToString()));
+                   dt2 = s.GetData(Convert.ToInt32(cmb.SelectedValue.ToString()));
+               }
 
-                
-                cmbCategs2.DisplayMember = "name";
-                cmbCategs2.ValueMember = "id";
+               cmbUnitFrom.DataSource = dt;
+               cmbUnitFrom.DisplayMember = "name";
+               cmbUnitFrom.ValueMember = "id";
+
+               cmbUnitTo.DataSource = dt2;
+               cmbUnitTo.DisplayMember = "name";
+               cmbUnitTo.ValueMember = "id";
             }
         }
 
         private void cmbCategs2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox cmb = (ComboBox)sender;
-            if (cmb.SelectedIndex != -1)
-            {
-                Data.dsConversorTableAdapters.measures_by_categoryTableAdapter m = new Data.dsConversorTableAdapters.measures_by_categoryTableAdapter();
+            //ComboBox cmb = (ComboBox)sender;
+            //if (cmb.SelectedIndex != -1)
+            //{
+            //    Data.dsConversorTableAdapters.measures_by_categoryTableAdapter m = new Data.dsConversorTableAdapters.measures_by_categoryTableAdapter();
 
-                cmbUnitFrom.DataSource = cmbUnitTo.DataSource = null;
+            //    cmbUnitFrom.DataSource = cmbUnitTo.DataSource = null;
 
-                DataRowView oDataRowView = cmb.SelectedItem as DataRowView;
+            //    DataRowView oDataRowView = cmb.SelectedItem as DataRowView;
 
-                DataTable dt = new DataTable();
-                DataTable dt2 = new DataTable();
+            //    DataTable dt = new DataTable();
+            //    DataTable dt2 = new DataTable();
 
-                if (oDataRowView != null)
-                {
-                    dt = m.GetMeasuresByCategory(Convert.ToInt32(oDataRowView.Row[0].ToString()));
-                    dt2 = m.GetMeasuresByCategory(Convert.ToInt32(oDataRowView.Row[0].ToString()));
-                }
-                else
-                {
-                    dt = m.GetMeasuresByCategory(Convert.ToInt32(cmb.SelectedValue.ToString()));
-                    dt2 = m.GetMeasuresByCategory(Convert.ToInt32(cmb.SelectedValue.ToString()));
-                }
+            //    if (oDataRowView != null)
+            //    {
+            //        dt = m.GetMeasuresByCategory(Convert.ToInt32(oDataRowView.Row[0].ToString()));
+            //        dt2 = m.GetMeasuresByCategory(Convert.ToInt32(oDataRowView.Row[0].ToString()));
+            //    }
+            //    else
+            //    {
+            //        dt = m.GetMeasuresByCategory(Convert.ToInt32(cmb.SelectedValue.ToString()));
+            //        dt2 = m.GetMeasuresByCategory(Convert.ToInt32(cmb.SelectedValue.ToString()));
+            //    }
 
-                cmbUnitFrom.DataSource = dt;
-                cmbUnitFrom.DisplayMember = "name";
-                cmbUnitFrom.ValueMember = "id";
+            //    cmbUnitFrom.DataSource = dt;
+            //    cmbUnitFrom.DisplayMember = "name";
+            //    cmbUnitFrom.ValueMember = "id";
 
-                cmbUnitTo.DataSource = dt2;
-                cmbUnitTo.DisplayMember = "name";
-                cmbUnitTo.ValueMember = "id";
+            //    cmbUnitTo.DataSource = dt2;
+            //    cmbUnitTo.DisplayMember = "name";
+            //    cmbUnitTo.ValueMember = "id";
 
-            }
+            //}
         }
     }
 }

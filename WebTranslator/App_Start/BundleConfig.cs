@@ -28,6 +28,9 @@ namespace WebTranslator.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/swagger").Include(
                 "~/Scripts/swagger-client.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/waitingfor").Include(
+                "~/Scripts/bootstrap-waitingfor.js"));
+
             BundleTable.EnableOptimizations = false;
         }
     }
