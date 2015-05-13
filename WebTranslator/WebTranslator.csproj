@@ -115,6 +115,7 @@
     <Content Include="Content\style-normal.css" />
     <Content Include="Content\style-wide.css" />
     <Content Include="Content\style.css" />
+    <Content Include="error.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar.jpg" />
@@ -127,6 +128,7 @@
     <Content Include="images\pic07.jpg" />
     <Content Include="images\pic08.jpg" />
     <Content Include="lib\swagger-client.js" />
+    <Content Include="log.txt" />
     <Content Include="Scripts\bootstrap-maxlength.min.js" />
     <Content Include="Scripts\bootstrap-waitingfor.js" />
     <Content Include="Scripts\init.js" />
@@ -144,6 +146,13 @@
     <Compile Include="Controllers\CurrencyController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\TranslateController.cs" />
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +173,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\industrial-control.com - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

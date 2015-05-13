@@ -27,6 +27,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#skel-layers-hiddenWrapper").css("height", "0");
+        });
+    </script>
+
 </head>
 
 <body>
@@ -80,29 +86,29 @@
 
     </div>
 
-    <div id="ads">
+        <div id="ads">
 
-        <p>
-            Publicidad aqui.
-        </p>
+            <p>
+                Publicidad aqui.
+            </p>
 
-    </div>
+        </div>
 
-    <!-- Main -->
-    <div id="main">
-        @RenderBody()
-    </div>
+        <!-- Main -->
+        <div id="main">
+            @RenderBody()
+        </div>
 
-    <!-- Footer -->
-    <div id="footer">
+        <!-- Footer -->
+        <div id="footer" style="left:0; right:0; bottom:0;">
 
-        <!-- Copyright -->
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved.</li>
-            <li>Design: <a href="#">Translator</a></li>
-        </ul>
+            <!-- Copyright -->
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved.</li>
+                <li>Design: <a href="#">Translator</a></li>
+            </ul>
 
-    </div>
+        </div>
 
 </body>
 
