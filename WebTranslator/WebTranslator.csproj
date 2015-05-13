@@ -174,6 +174,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\industrial-control.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\traductor.es - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
