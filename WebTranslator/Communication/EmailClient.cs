@@ -18,9 +18,9 @@ namespace WebTranslator.Communication
         {
             try
             {
-                var fromAddress = new MailAddress("nuevotraductor@gmail.com", "Nuevo Traductor");
+                var fromAddress = new MailAddress("no-reply@traductor.es", "Nuevo Traductor");
                 var toAddress = new MailAddress("nahum_fabian13@hotmail.com", "Santiago");
-                const string fromPassword = "nahum15eduardo";
+                const string fromPassword = "tdWdp#15";
                 const string subject = "Traduccion enviada por un amigo";
                 const string body = "Este es un mensaje de pruebas.";
 

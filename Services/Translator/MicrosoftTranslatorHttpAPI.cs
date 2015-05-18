@@ -36,7 +36,7 @@ namespace Services.Translator
         #region Constructors
         public MicrosoftTranslatorHttpAPI()
         {
-            authentication = new Authentication("app001-web-translator", "ckURYO1bduo0PmipUAQqMWOXCv00AC+HrSwDfLCC1QU=");
+            authentication = new Authentication("traductor_es", "M2NxVxnxzpvD6mU1BfpiJbvY1xsG2REWhsKwjiFsXeE=");
         }
         #endregion
 

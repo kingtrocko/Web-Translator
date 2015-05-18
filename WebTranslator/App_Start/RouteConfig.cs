@@ -13,16 +13,16 @@ namespace WebTranslator
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "TranslateLanguages",                                           // Route name
-                "Translate/x/{source}/{target}",                          // URL with parameters
-                new { controller = "Translate", action = "Translate" }  // Parameter defaults
-            );
+            //routes.MapRoute(
+            //    "TranslateLanguages",                                           // Route name
+            //    "Translate/x/{source}/{target}",                          // URL with parameters
+            //    new { controller = "Translate", action = "Translate" }  // Parameter defaults
+            //);
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Translate", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

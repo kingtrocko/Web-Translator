@@ -44,6 +44,14 @@
         });
     }
 
+    function OpenSendEmailBox(e)
+    {
+        e.preventDefault();
+        $('#sendEmailBox').modal({
+            backdrop: "static"
+        });
+    }
+
     function Speak()
     {
         var ServiceUrl = "@Url.Action("SpeakUrl", "Translate")";
@@ -193,7 +201,7 @@
                                     <a href="#" class="btnTrans" onclick="Speak(); return false;">Listen</a>
                                 </div>
                                 <div class="3u">
-                                    <a href="#" class="btnTrans">Send By Email</a>
+                                    <a href="#" class="btnTrans" onclick="OpenSendEmailBox(event);">Send By Email</a>
                                 </div>
                                 <div class="3u">
                                     <span>Share</span>
@@ -203,6 +211,27 @@
                     </div>
                 </div>
             </div>
+
+        <div class="modal" role="dialog" id="sendEmailBox" aria-labelledby="send-email" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">Enviar por Email</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                          
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         }
         <audio autoplay></audio>
     </div>

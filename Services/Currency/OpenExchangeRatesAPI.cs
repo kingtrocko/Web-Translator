@@ -20,7 +20,7 @@ namespace Services.Currency
             baseUrl = "http://openexchangerates.org/api";
             //TODO
             // change this for the Eduardo's One
-            appId = "cf62018530ee4de0851051da725dab63";
+            appId = "49258a72b85547bebd12c18ec3e5ade0";
         }
 
         public Dictionary<string, string> GetCurrencyNames()
